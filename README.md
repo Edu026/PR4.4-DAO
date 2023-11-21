@@ -1,3 +1,5 @@
+# Eduardo Amorós López #
+
 # Exemple de DAO #
 
 En aquest projecte hi ha un exemple de DAO a Java
