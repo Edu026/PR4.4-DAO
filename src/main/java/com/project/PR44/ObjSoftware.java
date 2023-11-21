@@ -1,4 +1,4 @@
-package com.project.PR44.Program;
+package com.project.PR44;
 
 import java.util.ArrayList;
 
@@ -40,5 +40,15 @@ public class ObjSoftware {
 
     public void addLlenguatge(int id_llenguatge){
         this.llenguatges.add(id_llenguatge);
+    }
+
+    public void removeLlenguatge(int id_llenguatge){
+        this.llenguatges.remove(id_llenguatge);
+    }
+
+    @Override
+    public String toString() {
+        return "Software: " + this.id + " " + this.nom + ", " + this.any
+        + " - " + this.llenguatges;
     }
 }

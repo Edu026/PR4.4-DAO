@@ -1,6 +1,4 @@
-package com.project.PR44.Program;
-
-import java.util.ArrayList;
+package com.project.PR44;
 
 public class ObjLlenguatge {
     private int id;
@@ -50,5 +48,10 @@ public class ObjLlenguatge {
 
     public void setPopularitat(int popularitat) {
         this.popularitat = popularitat;
+    }
+    @Override
+    public String toString() {
+        return "Llenguatge: " + this.id + " " + this.nom + ", " + this.any
+        + " - " + this.dificultat + "/" + this.popularitat;
     }
 }

@@ -1,4 +1,4 @@
-package com.project.PR44.Program;
+package com.project.PR44;
 
 import java.util.ArrayList;
 
@@ -44,5 +44,11 @@ public class ObjEina {
 
     public void removeLlenguatge(int id_llenguatge){
         this.llenguatges.remove(id_llenguatge);
+    }
+
+    @Override
+    public String toString() {
+        return "Eina: " + this.id + " " + this.nom + ", " + this.any
+        + " - " + this.llenguatges;
     }
 }

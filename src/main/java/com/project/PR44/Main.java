@@ -1,11 +1,11 @@
-package com.project.PR44.Program;
+package com.project.PR44;
 import java.util.ArrayList;
 
 public class Main {
-   public static String basePath = System.getProperty("user.dir") + "/data";
-   public static String llenguatgesPath = basePath + "./dbProgramacio/llenguatges.json";
-   public static String einesPath = basePath + "./dbProgramacio/eines.json";
-   public static String softwarePath = basePath + "./dbProgramacio/software.json";
+   public static String basePath = System.getProperty("user.dir") + "/data/";
+   public static String llenguatgesPath = basePath + "llenguatges.json";
+   public static String einesPath = basePath + "eines.json";
+   public static String softwarePath = basePath + "software.json";
 
 
    public static void main(String[] args) {

@@ -1,5 +1,6 @@
-package com.project.PR44.Program;
+package com.project.PR44;
 
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -8,10 +9,29 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.project.Dao;
-import com.project.MainDao;
-import com.project.ObjAlumne;
 
 public class DaoLlenguatge implements Dao<ObjLlenguatge>{
+
+    private void writeList(ArrayList<ObjLlenguatge> llista) {
+        try {   
+            JSONArray jsonArray = new JSONArray();
+            for (ObjLlenguatge llenguatge : llista) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("id", llenguatge.getId());
+                jsonObject.put("nom", llenguatge.getNom());
+                jsonObject.put("any", llenguatge.getAny());
+                jsonObject.put("dificultat", llenguatge.getDificultat());
+                jsonObject.put("popularitat", llenguatge.getPopularitat());
+                jsonArray.put(jsonObject);
+            }
+            PrintWriter out = new PrintWriter(Main.llenguatgesPath);
+            out.write(jsonArray.toString(4)); // 4 es l'espaiat
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private int getPosition (int id) {
         int result = -1;
@@ -33,6 +53,8 @@ public class DaoLlenguatge implements Dao<ObjLlenguatge>{
         if (pos != -1) {
             llenguatge = llista.get(pos);
             llenguatge.setNom(nom);
+            llista.set(pos, llenguatge);
+            writeList(llista);
         }
     }
 
@@ -43,6 +65,8 @@ public class DaoLlenguatge implements Dao<ObjLlenguatge>{
         if (pos != -1) {
             llenguatge = llista.get(pos);
             llenguatge.setAny(any);
+            llista.set(pos, llenguatge);
+            writeList(llista);
         }
     }
 
@@ -53,6 +77,8 @@ public class DaoLlenguatge implements Dao<ObjLlenguatge>{
         if (pos != -1) {
             llenguatge = llista.get(pos);
             llenguatge.setDificultat(dificultat);
+            llista.set(pos, llenguatge);
+            writeList(llista);
         }
     }
 
@@ -63,6 +89,8 @@ public class DaoLlenguatge implements Dao<ObjLlenguatge>{
         if (pos != -1) {
             llenguatge = llista.get(pos);
             llenguatge.setPopularitat(popularitat);
+            llista.set(pos, llenguatge);
+            writeList(llista);
         }
     }
 
@@ -72,6 +100,7 @@ public class DaoLlenguatge implements Dao<ObjLlenguatge>{
         ObjLlenguatge item = get(llenguatge.getId());
         if (item == null) {
             llista.add(llenguatge);
+            writeList(llista);
         }
     }
     
@@ -115,6 +144,7 @@ public class DaoLlenguatge implements Dao<ObjLlenguatge>{
         int pos = getPosition(id);
         if (pos != -1) {
             llista.set(pos, llenguatge);
+            writeList(llista);
         }
     }
 
@@ -124,6 +154,7 @@ public class DaoLlenguatge implements Dao<ObjLlenguatge>{
         int pos = getPosition(id);
         if (pos != -1) {
             llista.remove(pos);
+            writeList(llista);
         }
     }
 
